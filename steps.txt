@@ -1,0 +1,4 @@
+running locally  :  npx expo run:android
+
+
+'expo oritentation' for ios ,
