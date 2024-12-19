@@ -1,4 +1,6 @@
-export const products =pgTa
+
+
+export const products = pgTa
 
 export const orders = {
 
