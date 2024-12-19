@@ -4,6 +4,12 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import { useEffect, useState } from "react";
 import Header from "./app/components/Header";
 import Menu from "./app/components/Menu";
+import MenuDetail from "./app/screen/MenuDetail";
+import Checkout from "./app/screen/Checkout";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 export default function App() {
   const [orientation, setOrientation] = useState(1);
@@ -19,9 +25,16 @@ export default function App() {
     setOrientation(o);
   };
   return (
-    <View>
-      <Header />
-      <Menu />
+    <View style={styles.container}>
+      <View style={styles.section1}>
+        <Menu />
+      </View>
+      <View style={styles.section2}>
+        <MenuDetail />
+      </View>
+      <View style={styles.section3}>
+        <Checkout />
+      </View>
     </View>
   );
 }
@@ -29,8 +42,19 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "row",
+    marginTop: hp("0.5%"),
+  },
+  section1: {
+    flex: 0.75,
+    padding: wp("0.5%"),
+  },
+  section2: {
+    flex: 2,
+    padding: wp("0.5%"),
+  },
+  section3: {
+    flex: 0.75,
+    padding: wp("0.5%"),
   },
 });
