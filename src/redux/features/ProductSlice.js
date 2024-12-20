@@ -1,42 +1,45 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API } from "../../api";
 
+
 const initialState = {
-    userData: null,
+    products: null,      //products changed
     isLoading: false,
     isSuccess: false,
     isError: false,
 };
 
-export const login = createAsyncThunk('login', async (params, thunkApi) => {
-    console.log('Auth slice', params);
+
+//All products
+export const getAllProducts = createAsyncThunk('getAllProducts', async (params, thunkApi) => {
+
     try {
-        const response = await API.post('/auth/login', params);
-        console.log("auth slice response", response);
+        const response = await API.post('/auth/getAllProducts', params);
+        console.log("product slice response", response);
         return response.data;
     } catch (error) {
-        console.log("auth slice error", error);
+        console.log("product slice error", error);
         return thunkApi.rejectWithValue(error.message); // Return a serializable error message
     }
 });
 
-const AuthSlice = createSlice({
-    name: "authSlice",
+const ProductSlice = createSlice({
+    name: "productSlice",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         // login cases
-        builder.addCase(login.pending, (state) => {
+        builder.addCase(getAllProducts.pending, (state) => {
             state.isLoading = true;
             state.isError = false;
             state.errorMessage = null;
         });
-        builder.addCase(login.fulfilled, (state, action) => {
+        builder.addCase(getAllProducts.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
-            state.userData = action.payload;
+            state.products = action.payload;    //changed to products
         });
-        builder.addCase(login.rejected, (state, action) => {
+        builder.addCase(getAllProducts.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
             state.errorMessage = action.payload; // Store the error message
@@ -44,4 +47,4 @@ const AuthSlice = createSlice({
     }
 });
 
-export default AuthSlice.reducer;
+export default ProductSlice.reducer;

@@ -1,4 +1,4 @@
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
+import { Button, FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -12,7 +12,11 @@ const ItemDetails = ({ title, detail, price }) => {
             <View>
                 <Text style={styles.titleText}>{title}</Text>
                 <Text>{detail}</Text>
-                <Text style={styles.priceText}>₹{price}</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={styles.priceText}>₹{price}</Text>
+                    <Button title="Add" />
+                </View>
+
             </View>
         </View>
     )

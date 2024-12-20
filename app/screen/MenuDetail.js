@@ -1,6 +1,10 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native'
 import React from 'react'
 import ItemDetails from '../components/ItemDetails'
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 const DATA = [
     {
         id: 1,
@@ -46,16 +50,16 @@ const MenuDetail = () => {
         )
     }
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, marginTop: hp('2%') }}>
             <View style={styles.header}>
-
+                <Button title="Continue" />
             </View>
             <View style={styles.container} >
                 <FlatList
                     data={DATA}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
-                    numColumns={2}
+                    numColumns={3}
                 />
             </View>
         </View>

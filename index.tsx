@@ -3,7 +3,8 @@ import { registerRootComponent } from "expo";
 import App from "./App";
 import App2 from "./App2";
 import { Provider } from "react-redux";
-import { store } from "./src/redux/store";
+import { persistor, store } from "./src/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
@@ -12,7 +13,9 @@ import { store } from "./src/redux/store";
 
 const Root = () => (
   <Provider store={store}>
-    <App2 />
+    <PersistGate loading={null} persistor={persistor}>
+      <App2 />
+    </PersistGate>
   </Provider>
 );
 registerRootComponent(Root);

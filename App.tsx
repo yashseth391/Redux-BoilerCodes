@@ -32,9 +32,9 @@ export default function App() {
       <View style={styles.section2}>
         <MenuDetail />
       </View>
-      <View style={styles.section3}>
+      {/* <View style={styles.section3}>
         <Checkout />
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     marginTop: hp("0.5%"),
   },
   section1: {
-    flex: 0.75,
+    flex: 0.5,
     padding: wp("0.5%"),
   },
   section2: {
