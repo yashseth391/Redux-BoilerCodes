@@ -5,6 +5,8 @@ import { store } from './src/redux/store'
 import CounterScreen from './src/screens/CounterScreen'
 import Login from './src/screens/Login'
 import App from './App'
+import AppNavigation from './src/navigation/AppNavigation'
+import ModalTester from './app/components/ModalTester'
 
 
 

@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ItemDetails from '../components/ItemDetails'
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../../src/redux/features/ProductSlice';
+import { useNavigation } from '@react-navigation/native';
+
 const DATA = [
     {
         id: 1,
@@ -43,12 +47,21 @@ const DATA = [
         price: 250,
     }
 ]
+
 const MenuDetail = () => {
     const renderItem = ({ item }) => {
         return (
-            <ItemDetails title={item.title} detail={item.detail} price={item.price} />
+            <ItemDetails item={item} />
         )
     }
+    // const dispatch = useDispatch();
+    //const { products, isloading } = useSelector(state => state.products);   //products naam ke reducer se destructure
+
+    // useEffect(() => {
+    //     // dispatch(getAllProducts()); currently not getting data from API
+    //     //console.log(products.products);
+    // })
+
     return (
         <View style={{ flex: 1, marginTop: hp('2%') }}>
             <View style={styles.header}>
