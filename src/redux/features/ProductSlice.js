@@ -14,7 +14,7 @@ const initialState = {
 export const getAllProducts = createAsyncThunk('getAllProducts', async (params, thunkApi) => {
 
     try {
-        const response = await API.get('/products/1', params);   //base url ke aage jo bhi endpoint hai wo likh do
+        const response = await API.get('/data', params);   //base url ke aage jo bhi endpoint hai wo likh do
         console.log("product slice response", response);
         return response.data;
     } catch (error) {

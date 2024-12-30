@@ -36,33 +36,56 @@ const ItemScreen = ({ Product }) => {
     }, [cart, total]);
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={styles.mainContainer} >
             <View style={styles.container} >
                 <Image
                     source={require('../../assets/images/dal_makhani.jpeg')}
                     style={styles.image}
                 />
-                <View>
+                <View style={styles.container2}>
                     <Text style={styles.titleText}>{Product.title}</Text>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={styles.priceText}>₹{Product.price}</Text>
-                        {currentItem?.id === Product.id && (
-                            <Pressable
-                                style={styles.button}
-                                onPress={() => dispatch(removeFromCart(Product))}>
-                                <Text>Remove</Text>
-                            </Pressable>
-                        )}
-                        <Pressable
-                            style={styles.button}
-                            onPress={() => dispatch(addToCart(Product))}>
-                            <Text>Add</Text>
-                        </Pressable>
 
+                </View>
 
+            </View>
+            <View style={styles.infoContainer}>
+                <View>
+                    <Text style={styles.headingText}>Size</Text>
+                    <View>
+                        <Text>Half</Text>
+                    </View>
+                    <View>
+                        <Text>Full</Text>
                     </View>
                 </View>
+                <View>
+                    <Text style={styles.headingText}>Spice Level</Text>
+                    <View>
+                        <Text>Less Spice</Text>
+                    </View>
+                    <View>
+                        <Text>More Spice</Text>
+                    </View>
+                </View>
+            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+
+                {currentItem?.id === Product.id && (
+                    <Pressable
+                        style={styles.button}
+                        onPress={() => dispatch(removeFromCart(Product))}>
+                        <Text>Remove</Text>
+                    </Pressable>
+                )}
+                <Pressable
+                    style={styles.button}
+                    onPress={() => dispatch(addToCart(Product))}>
+                    <Text>Add</Text>
+                </Pressable>
+
+
             </View>
         </View>
     );
@@ -72,14 +95,35 @@ export default ItemScreen;
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: 10,
-        flexDirection: 'row'
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        borderRadius: wp('5%'),
+        margin: wp('2%'),
+        padding: wp('2%'),
+        paddingRight: hp('10%'),
+    },
+    container2: {
+        marginRight: 20,
+        marginLeft: 20
+    },
+    headingText: {
+        fontWeight: "bold"
+    },
+    infoContainer: {
+        backgroundColor: 'white',
+        padding: wp('2%'),
+        borderRadius: wp('5%'),
     },
     image: {
-        height: hp('20%'),
-        width: wp('30%'),
+        height: hp('6%'),
+        width: wp('10%'),
+    },
+    mainContainer: {
+        flex: 1,
+        backgroundColor: 'yellow',
     },
     titleText: {
         fontSize: 20,

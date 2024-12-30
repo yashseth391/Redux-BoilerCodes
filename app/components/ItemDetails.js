@@ -1,12 +1,13 @@
 import { Button, Image, StyleSheet, Text, View, Modal, } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import ItemScreen from './ItemScreen';
 
 const ItemDetails = ({ item }) => {
 
-    const { title, detail, price } = item;
+    const { dish_name, dish_cost, dish_description } = item;
     const [ModalVisible, setModalVisible] = useState(false);
+
     const renderModal = () => (
         <Modal
             visible={ModalVisible}
@@ -28,10 +29,10 @@ const ItemDetails = ({ item }) => {
                 source={require('../../assets/images/dal_makhani.jpeg')} style={styles.image}
             />
             <View>
-                <Text style={styles.titleText}>{title}</Text>
-                <Text>{detail}</Text>
+                <Text style={styles.titleText}>{dish_name}</Text>
+                <Text>{dish_description}</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={styles.priceText}>₹{price}</Text>
+                    <Text style={styles.priceText}>₹{dish_cost}</Text>
                     <Button title="Add" onPress={() => { setModalVisible(true) }} />
                 </View>
                 {ModalVisible && renderModal()}
@@ -69,10 +70,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
     },
     modalContainer: {
-        width: wp('90%'), // 50% of screen width
-        height: hp('25%'), // 60% of screen height
-        backgroundColor: 'white',
-        borderRadius: 10,
+        width: wp('90%'),
+        height: hp('33%'),
+        backgroundColor: 'yellow',
+        borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 4, // Ensure the modal touches the bottom

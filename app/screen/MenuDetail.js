@@ -9,46 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../src/redux/features/ProductSlice';
 import { useNavigation } from '@react-navigation/native';
 
-const DATA = [
-    {
-        id: 1,
-        title: 'Dhal Makhani',
-        detail: 'Dhal Makhani is a popular dish from the Punjab region of the Indian subcontinent.',
-        price: 250,
-    },
-    {
-        id: 2,
-        title: 'Dhal Makhani',
-        detail: 'Dhal Makhani is a popular dish from the Punjab region of the Indian subcontinent.',
-        price: 250,
-    },
-    {
-        id: 3,
-        title: 'Dhal Makhani',
-        detail: 'Dhal Makhani is a popular dish from the Punjab region of the Indian subcontinent.',
-        price: 250,
-    },
-    {
-        id: 4,
-        title: 'Dhal Makhani',
-        detail: 'Dhal Makhani is a popular dish from the Punjab region of the Indian subcontinent.',
-        price: 250,
-    },
-    {
-        id: 5,
-        title: 'Dhal Makhani',
-        detail: 'Dhal Makhani is a popular dish from the Punjab region of the Indian subcontinent.',
-        price: 250,
-    },
-    {
-        id: 6,
-        title: 'Dhal Makhani',
-        detail: 'Dhal Makhani is a popular dish from the Punjab region of the Indian subcontinent.',
-        price: 250,
-    }
-]
 
-const MenuDetail = () => {
+
+const MenuDetail = ({ data }) => {
     const renderItem = ({ item }) => {
         return (
             <ItemDetails item={item} />
@@ -61,17 +24,20 @@ const MenuDetail = () => {
     //     // dispatch(getAllProducts()); currently not getting data from API
     //     //console.log(products.products);
     // })
-
+    useEffect(() => {
+        console.log("data for menuDetails", data)
+    }, [])
     return (
         <View style={{ flex: 1, marginTop: hp('2%') }}>
             <View style={styles.header}>
-                <Button title="Continue" />
+                <Text style={styles.headerText}>Menu</Text>
+                <Button title="Continue" style={styles.btnText} />
             </View>
             <View style={styles.container} >
                 <FlatList
-                    data={DATA}
+                    data={data?.menuItemsData}
                     renderItem={renderItem}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.dish_id}
                     numColumns={3}
                 />
             </View>
@@ -82,8 +48,16 @@ const MenuDetail = () => {
 export default MenuDetail
 
 const styles = StyleSheet.create({
+    btnText: {
+
+    },
     container: {
         backgroundColor: 'white',
         flex: 1,
+    },
+    header: {
+        flexDirection: 'row',
+
+        alignItems: "baseline"
     }
 })

@@ -11,10 +11,11 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-export default function App() {
+export default function App({ data }) {
   const [orientation, setOrientation] = useState(1);
   useEffect(() => {
     lockOrientation();
+
   }, []);
 
   const lockOrientation = async () => {
@@ -27,10 +28,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.section1}>
-        <Menu />
+        <Menu data={data} />
       </View>
       <View style={styles.section2}>
-        <MenuDetail />
+        <MenuDetail data={data} />
       </View>
       {/* <View style={styles.section3}>
         <Checkout />

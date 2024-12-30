@@ -8,7 +8,7 @@ const Box = ({ name, number }) => {
     return (
         <View style={styles.box}>
             <Text style={styles.ItemText}>{name}</Text>
-            <Text style={styles.ItemNumber}>{number} items</Text>
+            {/* <Text style={styles.ItemNumber}>{number} items</Text> */}
         </View>
     )
 }
@@ -18,13 +18,14 @@ export default Box
 const styles = StyleSheet.create({
     box: {
         backgroundColor: 'grey',
-        height: hp('10%'),
+        height: hp('12%'),
         width: wp('40%'),
         margin: wp('2%'),
         borderRadius: 30,
+        padding: wp('2%'),
     },
     ItemText: {
-        fontSize: 20,
+        fontSize: hp('2%'),
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'black',
